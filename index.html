@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentina ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4d6d, #c9184a, #720026);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    position: relative;
+}
+
+/* Background glow */
+body::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(120px);
+    border-radius: 50%;
+    animation: moveGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes moveGlow {
+    from { transform: translate(-100px, -50px); }
+    to { transform: translate(100px, 50px); }
+}
+
+.card {
+    text-align: center;
+    background: rgba(255,255,255,0.12);
+    padding: 60px;
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+    animation: fadeIn 2s ease-in-out;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+button {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 40px;
+    background: white;
+    color: #c9184a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+button:hover {
+    transform: scale(1.15);
+    background: #ffccd5;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Love animation */
+.heart {
+    position: absolute;
+    top: -20px;
+    font-size: 22px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Valentina ❤️</h1>
+    <p>Kamu adalah alasan senyumku setiap hari 💕</p>
+    <button onclick="startLove()">Klik Aku</button>
+</div>
+
+<!-- Musik -->
+<audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startLove() {
+    document.getElementById("bg-music").play();
+    createHearts();
+}
+
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 250);
+}
+</script>
+
+</body>
+</html>
